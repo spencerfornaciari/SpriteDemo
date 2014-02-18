@@ -8,6 +8,9 @@
 
 #import "SFMyScene.h"
 
+static const uint32_t batmanCategory = 0x1 << 0;
+static const uint32_t penguinCategory = 0x1 << 1;
+
 @interface SFMyScene ()
 {
     int _nextFlappy;
@@ -29,12 +32,15 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
+        self.physicsWorld.contactDelegate = self;
+        //self.physicsWorld.
+        
         self.label = [SKLabelNode labelNodeWithFontNamed:@"Helvetica-CondensedMedium"];
         self.label.fontColor = [UIColor blackColor];
         self.label.name = @"lives";
         self.label.fontSize = 20;
         self.label.position = CGPointMake(50, 280);
-        lives = 5;
+        lives = 1;
         time = 0;
         
         self.label.text = [NSString stringWithFormat:@"Lives: %d", lives];
@@ -72,12 +78,17 @@
         self.mainCharacter = [SKSpriteNode spriteNodeWithImageNamed:@"batman.png"];
         self.mainCharacter.position = CGPointMake(50, 150);
         self.mainCharacter.name = @"batman";
+        
         [self addChild:self.mainCharacter];
-        
         self.mainCharacter.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.mainCharacter.size];
+        self.mainCharacter.physicsBody.categoryBitMask = batmanCategory;
+        self.mainCharacter.physicsBody.allowsRotation = NO;
+        self.mainCharacter.physicsBody.usesPreciseCollisionDetection = TRUE;
+        self.mainCharacter.physicsBody.collisionBitMask = penguinCategory;
+        //self.mainCharacter.physicsBody.contactTestBitMask = penguinCategory;
         
-        self.mainCharacter.physicsBody.dynamic = YES;
-        self.mainCharacter.physicsBody.affectedByGravity = YES;
+        //self.mainCharacter.physicsBody.dynamic = YES;
+        //self.mainCharacter.physicsBody.affectedByGravity = YES;
         self.mainCharacter.physicsBody.mass = 0.02;
         
         self.flappyArray = [[NSMutableArray alloc] initWithCapacity:kNumFlappys];
@@ -85,9 +96,15 @@
         for (int i = 0; i < kNumFlappys; i++) {
             SKSpriteNode *flappy = [SKSpriteNode spriteNodeWithImageNamed:@"penguin.png"];
             flappy.hidden = YES;
+            flappy.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:flappy.size];
+            flappy.physicsBody.categoryBitMask = penguinCategory;
+            flappy.physicsBody.collisionBitMask = batmanCategory;
+            //flappy.physicsBody.contactTestBitMask = batmanCategory;
+            flappy.physicsBody.dynamic = NO;
             [self.flappyArray addObject:flappy];
-            [self addChild:flappy];
             flappy.position = CGPointMake(1000, 300);
+            [self addChild:flappy];
+           
             
      
         
@@ -105,9 +122,6 @@
     
     [self.mainCharacter.physicsBody setVelocity:CGVectorMake(0, 0)];
     [self.mainCharacter.physicsBody applyImpulse:CGVectorMake(0, 7)];
-    
-    self.label.text = @"Hello";
-
 
 }
 
@@ -144,8 +158,9 @@
         }
         
         [flappy removeAllActions];
+
+        //flappy.physicsBody.affectedByGravity = TRUE;
         
-        flappy.physicsBody.affectedByGravity = TRUE;
         
         flappy.position = CGPointMake(self.frame.size.width + flappy.size.width / 2, randY);
         flappy.hidden = NO;
@@ -165,27 +180,34 @@
     
     BOOL hurt = FALSE;
     
-    for (SKSpriteNode *flappy in self.flappyArray) {
-        if ([self.mainCharacter intersectsNode:flappy]) {
-            [self.mainCharacter removeFromParent];
-            
-            NSString *explosionPath = [[NSBundle mainBundle] pathForResource:@"SparkParticle" ofType:@"sks"];
-            SKEmitterNode *burstNode = [NSKeyedUnarchiver unarchiveObjectWithFile:explosionPath];
-            
-            burstNode.position = self.mainCharacter.position;
-            [self addChild:burstNode];
-            hurt = TRUE;
-            
-            
-            break;
-        }
-    }
+//    for (SKSpriteNode *flappy in self.flappyArray) {
+//        if ([self.mainCharacter intersectsNode:flappy]) {
+//            [self.mainCharacter removeFromParent];
+//            
+//            NSString *explosionPath = [[NSBundle mainBundle] pathForResource:@"SparkParticle" ofType:@"sks"];
+//            SKEmitterNode *burstNode = [NSKeyedUnarchiver unarchiveObjectWithFile:explosionPath];
+//            
+//            burstNode.position = self.mainCharacter.position;
+//            [self addChild:burstNode];
+//            hurt = TRUE;
+//            
+//            [SKAction removeFromParent];
+//            
+//            break;
+//        }
+    //}
 
     time++;
     
     if (time % 5 == 0) {
         score++;
         self.label2.text = [NSString stringWithFormat:@"Score: %d", score / 35];
+
+    }
+    int addLife = (time / 60) % 5;
+    if (!addLife == 0) {
+        //lives++;
+        //self.label.text = [NSString stringWithFormat:@"Livs: %d", lives/ 35];
 
     }
     
@@ -200,5 +222,11 @@
         self.label.text = @"LOSER";
     }
 }
+
+-(void)didBeginContact:(SKPhysicsContact *)contact
+{
+    NSLog(@"Contact");
+}
+
 
 @end

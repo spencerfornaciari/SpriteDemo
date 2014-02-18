@@ -10,6 +10,7 @@
 
 static const uint32_t batmanCategory = 0x1 << 0;
 static const uint32_t penguinCategory = 0x1 << 1;
+static const uint32_t groundCategory = 0x1 << 2;
 
 @interface SFMyScene ()
 {
@@ -64,6 +65,8 @@ static const uint32_t penguinCategory = 0x1 << 1;
         _nextFlappy = 0;
         
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+        self.physicsBody.collisionBitMask = batmanCategory;
+        self.physicsBody.categoryBitMask = groundCategory;
         
         for (int i = 0; i < 2; i++) {
             SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"background2.png"];
@@ -83,9 +86,9 @@ static const uint32_t penguinCategory = 0x1 << 1;
         self.mainCharacter.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.mainCharacter.size];
         self.mainCharacter.physicsBody.categoryBitMask = batmanCategory;
         self.mainCharacter.physicsBody.allowsRotation = NO;
-        self.mainCharacter.physicsBody.usesPreciseCollisionDetection = TRUE;
-        self.mainCharacter.physicsBody.collisionBitMask = penguinCategory;
-        //self.mainCharacter.physicsBody.contactTestBitMask = penguinCategory;
+        //self.mainCharacter.physicsBody.usesPreciseCollisionDetection = TRUE;
+        self.mainCharacter.physicsBody.collisionBitMask = groundCategory;
+        self.mainCharacter.physicsBody.contactTestBitMask = penguinCategory;
         
         //self.mainCharacter.physicsBody.dynamic = YES;
         //self.mainCharacter.physicsBody.affectedByGravity = YES;
@@ -98,7 +101,7 @@ static const uint32_t penguinCategory = 0x1 << 1;
             flappy.hidden = YES;
             flappy.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:flappy.size];
             flappy.physicsBody.categoryBitMask = penguinCategory;
-            flappy.physicsBody.collisionBitMask = batmanCategory;
+            flappy.physicsBody.collisionBitMask = 0;
             //flappy.physicsBody.contactTestBitMask = batmanCategory;
             flappy.physicsBody.dynamic = NO;
             [self.flappyArray addObject:flappy];
@@ -226,6 +229,16 @@ static const uint32_t penguinCategory = 0x1 << 1;
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
     NSLog(@"Contact");
+    if (contact) {
+        [self.mainCharacter removeFromParent];
+        
+        NSString *explosionPath = [[NSBundle mainBundle] pathForResource:@"SparkParticle" ofType:@"sks"];
+        SKEmitterNode *burstNode = [NSKeyedUnarchiver unarchiveObjectWithFile:explosionPath];
+
+        burstNode.position = self.mainCharacter.position;
+        [self addChild:burstNode];
+        [SKAction removeFromParent];
+    }
 }
 
 

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8915D9B918B2D82A00A18A72 /* batman.png in Resources */ = {isa = PBXBuildFile; fileRef = 8915D9B818B2D82A00A18A72 /* batman.png */; };
+		8915D9BD18B2DC3A00A18A72 /* joker.png in Resources */ = {isa = PBXBuildFile; fileRef = 8915D9BC18B2DC3A00A18A72 /* joker.png */; };
+		8915D9C118B2DDB300A18A72 /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8915D9C018B2DDB300A18A72 /* background2.png */; };
+		8915D9C318B2DEBF00A18A72 /* penguin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8915D9C218B2DEBF00A18A72 /* penguin.png */; };
 		893B3F8918B27C3100DCB63F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893B3F8818B27C3100DCB63F /* Foundation.framework */; };
 		893B3F8B18B27C3100DCB63F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893B3F8A18B27C3100DCB63F /* CoreGraphics.framework */; };
 		893B3F8D18B27C3100DCB63F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893B3F8C18B27C3100DCB63F /* UIKit.framework */; };
@@ -17,13 +21,17 @@
 		893B3F9E18B27C3100DCB63F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 893B3F9C18B27C3100DCB63F /* Main.storyboard */; };
 		893B3FA118B27C3100DCB63F /* SFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893B3FA018B27C3100DCB63F /* SFViewController.m */; };
 		893B3FA418B27C3100DCB63F /* SFMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 893B3FA318B27C3100DCB63F /* SFMyScene.m */; };
-		893B3FA618B27C3100DCB63F /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 893B3FA518B27C3100DCB63F /* Spaceship.png */; };
 		893B3FA818B27C3100DCB63F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 893B3FA718B27C3100DCB63F /* Images.xcassets */; };
 		893B3FAF18B27C3100DCB63F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893B3FAE18B27C3100DCB63F /* XCTest.framework */; };
 		893B3FB018B27C3100DCB63F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893B3F8818B27C3100DCB63F /* Foundation.framework */; };
 		893B3FB118B27C3100DCB63F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893B3F8C18B27C3100DCB63F /* UIKit.framework */; };
 		893B3FB918B27C3100DCB63F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 893B3FB718B27C3100DCB63F /* InfoPlist.strings */; };
 		893B3FBB18B27C3100DCB63F /* SpriteDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 893B3FBA18B27C3100DCB63F /* SpriteDemoTests.m */; };
+		893B3FCD18B283C300DCB63F /* kirby.png in Resources */ = {isa = PBXBuildFile; fileRef = 893B3FCC18B283C300DCB63F /* kirby.png */; };
+		893B3FCF18B284CF00DCB63F /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 893B3FCE18B284CF00DCB63F /* background.jpg */; };
+		893B3FD518B28A8800DCB63F /* flappy.png in Resources */ = {isa = PBXBuildFile; fileRef = 893B3FD418B28A8800DCB63F /* flappy.png */; };
+		8965DF7918B28FCD00904B28 /* SparkParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8965DF7718B28FCD00904B28 /* SparkParticle.sks */; };
+		8965DF7A18B28FCD00904B28 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8965DF7818B28FCD00904B28 /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8915D9B818B2D82A00A18A72 /* batman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = batman.png; sourceTree = "<group>"; };
+		8915D9BC18B2DC3A00A18A72 /* joker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joker.png; sourceTree = "<group>"; };
+		8915D9C018B2DDB300A18A72 /* background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background2.png; sourceTree = "<group>"; };
+		8915D9C218B2DEBF00A18A72 /* penguin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = penguin.png; path = ../penguin.png; sourceTree = "<group>"; };
 		893B3F8518B27C3100DCB63F /* SpriteDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		893B3F8818B27C3100DCB63F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		893B3F8A18B27C3100DCB63F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,13 +65,17 @@
 		893B3FA018B27C3100DCB63F /* SFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFViewController.m; sourceTree = "<group>"; };
 		893B3FA218B27C3100DCB63F /* SFMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFMyScene.h; sourceTree = "<group>"; };
 		893B3FA318B27C3100DCB63F /* SFMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFMyScene.m; sourceTree = "<group>"; };
-		893B3FA518B27C3100DCB63F /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		893B3FA718B27C3100DCB63F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		893B3FAD18B27C3100DCB63F /* SpriteDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpriteDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		893B3FAE18B27C3100DCB63F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		893B3FB618B27C3100DCB63F /* SpriteDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpriteDemoTests-Info.plist"; sourceTree = "<group>"; };
 		893B3FB818B27C3100DCB63F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		893B3FBA18B27C3100DCB63F /* SpriteDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpriteDemoTests.m; sourceTree = "<group>"; };
+		893B3FCC18B283C300DCB63F /* kirby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kirby.png; sourceTree = "<group>"; };
+		893B3FCE18B284CF00DCB63F /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background.jpg; path = ../../../../Desktop/background.jpg; sourceTree = "<group>"; };
+		893B3FD418B28A8800DCB63F /* flappy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flappy.png; sourceTree = "<group>"; };
+		8965DF7718B28FCD00904B28 /* SparkParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SparkParticle.sks; sourceTree = "<group>"; };
+		8965DF7818B28FCD00904B28 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +106,8 @@
 		893B3F7C18B27C3100DCB63F = {
 			isa = PBXGroup;
 			children = (
+				8965DF7718B28FCD00904B28 /* SparkParticle.sks */,
+				8965DF7818B28FCD00904B28 /* spark.png */,
 				893B3F9018B27C3100DCB63F /* SpriteDemo */,
 				893B3FB418B27C3100DCB63F /* SpriteDemoTests */,
 				893B3F8718B27C3100DCB63F /* Frameworks */,
@@ -121,6 +139,13 @@
 		893B3F9018B27C3100DCB63F /* SpriteDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8915D9C218B2DEBF00A18A72 /* penguin.png */,
+				8915D9C018B2DDB300A18A72 /* background2.png */,
+				8915D9BC18B2DC3A00A18A72 /* joker.png */,
+				8915D9B818B2D82A00A18A72 /* batman.png */,
+				893B3FD418B28A8800DCB63F /* flappy.png */,
+				893B3FCE18B284CF00DCB63F /* background.jpg */,
+				893B3FCC18B283C300DCB63F /* kirby.png */,
 				893B3F9918B27C3100DCB63F /* SFAppDelegate.h */,
 				893B3F9A18B27C3100DCB63F /* SFAppDelegate.m */,
 				893B3F9C18B27C3100DCB63F /* Main.storyboard */,
@@ -128,7 +153,6 @@
 				893B3FA018B27C3100DCB63F /* SFViewController.m */,
 				893B3FA218B27C3100DCB63F /* SFMyScene.h */,
 				893B3FA318B27C3100DCB63F /* SFMyScene.m */,
-				893B3FA518B27C3100DCB63F /* Spaceship.png */,
 				893B3FA718B27C3100DCB63F /* Images.xcassets */,
 				893B3F9118B27C3100DCB63F /* Supporting Files */,
 			);
@@ -241,10 +265,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8915D9C318B2DEBF00A18A72 /* penguin.png in Resources */,
 				893B3F9518B27C3100DCB63F /* InfoPlist.strings in Resources */,
+				8915D9C118B2DDB300A18A72 /* background2.png in Resources */,
+				8965DF7A18B28FCD00904B28 /* spark.png in Resources */,
+				893B3FCD18B283C300DCB63F /* kirby.png in Resources */,
+				893B3FCF18B284CF00DCB63F /* background.jpg in Resources */,
 				893B3FA818B27C3100DCB63F /* Images.xcassets in Resources */,
-				893B3FA618B27C3100DCB63F /* Spaceship.png in Resources */,
+				8915D9BD18B2DC3A00A18A72 /* joker.png in Resources */,
+				8965DF7918B28FCD00904B28 /* SparkParticle.sks in Resources */,
 				893B3F9E18B27C3100DCB63F /* Main.storyboard in Resources */,
+				8915D9B918B2D82A00A18A72 /* batman.png in Resources */,
+				893B3FD518B28A8800DCB63F /* flappy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +509,7 @@
 				893B3FC018B27C3100DCB63F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		893B3FC118B27C3100DCB63F /* Build configuration list for PBXNativeTarget "SpriteDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -485,6 +518,7 @@
 				893B3FC318B27C3100DCB63F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

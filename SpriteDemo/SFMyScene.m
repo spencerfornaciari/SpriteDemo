@@ -12,12 +12,12 @@
 {
     int _nextFlappy;
     double _nextFlappySpawn;
-    int lives;
+    int lives, score, time;
 }
 
 @property (nonatomic) SKSpriteNode *mainCharacter;
 @property (nonatomic) NSMutableArray *flappyArray;
-@property (nonatomic) SKLabelNode *label;
+@property (nonatomic) SKLabelNode *label, *label2, *label3;
 
 @end
 
@@ -31,16 +31,29 @@
         
         self.label = [SKLabelNode labelNodeWithFontNamed:@"Helvetica-CondensedMedium"];
         self.label.fontColor = [UIColor blackColor];
-        //self.label.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
-        //self.label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-        self.label.name = @"score";
+        self.label.name = @"lives";
         self.label.fontSize = 20;
         self.label.position = CGPointMake(50, 280);
         lives = 5;
+        time = 0;
         
         self.label.text = [NSString stringWithFormat:@"Lives: %d", lives];
-    
         
+        self.label2 = [SKLabelNode labelNodeWithFontNamed:@"Helvetica-CondensedMedium"];
+        self.label2.fontColor = [UIColor blackColor];
+        self.label2.name = @"score";
+        self.label2.fontSize = 20;
+        self.label2.position = CGPointMake(50, 260);
+        
+        score = 0;
+        
+        self.label2.text = [NSString stringWithFormat:@"Score: %d", score];
+
+        self.label3 = [SKLabelNode labelNodeWithFontNamed:@"Helvetica-CondensedMedium"];
+        self.label3.fontSize = 20;
+        self.label3.name = @"time";
+        self.label3.fontColor = [UIColor blackColor];
+        self.label3.position = CGPointMake(50, 240);
         
         _nextFlappy = 0;
         
@@ -81,6 +94,8 @@
         }
         
             [self addChild:self.label];
+            [self addChild:self.label2];
+            [self addChild:self.label3];
     }
     return self;
 }
@@ -103,7 +118,6 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    
     [self enumerateChildNodesWithName:@"background" usingBlock:^(SKNode *node, BOOL *stop) {
         SKSpriteNode * bg = (SKSpriteNode *)node;
         bg.position = CGPointMake(bg.position.x - 5, bg.position.y);
@@ -146,7 +160,10 @@
         SKAction *moveFlappyActionWithDone = [SKAction sequence:@[moveAction, doneAction]];
         
         [flappy runAction:moveFlappyActionWithDone];
+        
     }
+    
+    BOOL hurt = FALSE;
     
     for (SKSpriteNode *flappy in self.flappyArray) {
         if ([self.mainCharacter intersectsNode:flappy]) {
@@ -157,19 +174,31 @@
             
             burstNode.position = self.mainCharacter.position;
             [self addChild:burstNode];
-            if (lives > 0) {
-                lives--;
-                self.label.text = [NSString stringWithFormat:@"Lives: %d", lives];
-            } else {
-                self.label.text = @"LOSER";
-            }
+            hurt = TRUE;
             
             
             break;
         }
     }
 
-     NSLog(@"%d", lives);
+    time++;
+    
+    if (time % 5 == 0) {
+        score++;
+        self.label2.text = [NSString stringWithFormat:@"Score: %d", score / 35];
+
+    }
+    
+    self.label3.text = [NSString stringWithFormat:@"Time: %d", time / 35];
+    
+    if (hurt) {
+        lives--;
+    }
+    if (lives > 0) {
+        self.label.text = [NSString stringWithFormat:@"Lives: %d", lives];
+    } else {
+        self.label.text = @"LOSER";
+    }
 }
 
 @end

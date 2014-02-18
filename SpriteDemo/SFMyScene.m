@@ -12,10 +12,12 @@
 {
     int _nextFlappy;
     double _nextFlappySpawn;
+    int lives;
 }
 
 @property (nonatomic) SKSpriteNode *mainCharacter;
 @property (nonatomic) NSMutableArray *flappyArray;
+@property (nonatomic) SKLabelNode *label;
 
 @end
 
@@ -26,6 +28,19 @@
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
+        
+        self.label = [SKLabelNode labelNodeWithFontNamed:@"Helvetica-CondensedMedium"];
+        self.label.fontColor = [UIColor blackColor];
+        //self.label.verticalAlignmentMode = SKLabelVerticalAlignmentModeTop;
+        //self.label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        self.label.name = @"score";
+        self.label.fontSize = 20;
+        self.label.position = CGPointMake(50, 280);
+        lives = 5;
+        
+        self.label.text = [NSString stringWithFormat:@"Lives: %d", lives];
+    
+        
         
         _nextFlappy = 0;
         
@@ -61,8 +76,11 @@
             [self addChild:flappy];
             flappy.position = CGPointMake(1000, 300);
             
+     
+        
         }
         
+            [self addChild:self.label];
     }
     return self;
 }
@@ -72,6 +90,8 @@
     
     [self.mainCharacter.physicsBody setVelocity:CGVectorMake(0, 0)];
     [self.mainCharacter.physicsBody applyImpulse:CGVectorMake(0, 7)];
+    
+    self.label.text = @"Hello";
 
 
 }
@@ -137,11 +157,19 @@
             
             burstNode.position = self.mainCharacter.position;
             [self addChild:burstNode];
+            if (lives > 0) {
+                lives--;
+                self.label.text = [NSString stringWithFormat:@"Lives: %d", lives];
+            } else {
+                self.label.text = @"LOSER";
+            }
+            
             
             break;
         }
     }
-    
+
+     NSLog(@"%d", lives);
 }
 
 @end
